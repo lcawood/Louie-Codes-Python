@@ -1,0 +1,11 @@
+u = abs(int(input("Enter an integer.")))   #user inputs integer
+
+x = u
+s = 0 
+while x != 0:
+    r = x % 10   
+    if r % 2 == 1:   #we check if the digit is odd
+        s = s + r   #if so, we add to our total 
+    x = x // 10 
+    
+print("The sum of the odd digits in", u, "is", s)
