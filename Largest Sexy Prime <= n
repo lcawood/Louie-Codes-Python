@@ -1,0 +1,31 @@
+#Prime test function
+def prime(n):
+    """
+    Returns `True` if `n` is a prime number and `False` otherwise.
+    """
+    if n < 2:
+        return False
+    for k in range(2, n):
+        if n % k == 0:
+            return False
+    return True
+    
+    def sexyprime(n):
+    """
+    For a given n, returns the largest sexy prime <= n.
+    A prime p_1 is sexy if p_2 = p_1 + 6 is also prime.
+    """    
+    
+    prime_list = []
+    for i in range(1,n+1):
+       
+        if prime(i) == True:    
+            prime_list.append(i) #generates ordered list of primes <= n
+              
+    i = 0 
+    while i < len(prime_list): #check if elements in list are sexy primes, in descending order
+        if prime(prime_list[-1-i] + 6) == True:
+            return print(prime_list[-1-i], 'is the largest sexy prime <=', n)
+        else:
+            i = i + 1
+    return None #case for no sexy primes <=n, indeed <=4
