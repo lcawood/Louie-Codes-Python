@@ -1,0 +1,38 @@
+def isbn(n, mode): # make sure to use "" when inputting text for 'mode'
+    """
+    For a given ISBN number:
+    We verify or calculate the check digit, should it exist. 
+    """
+    
+    if mode == 'calculate':
+        s = 0
+        for i in range(0,6):
+            n_i = (n // 10 ** (2*i)) % 10 
+            s = s + (3 * n_i)
+            
+        for i in range(0,6):
+            n_i = (n // 10 ** ((2*i) + 1)) % 10 
+            s = s + n_i
+        
+        check_digit = 10 - (s % 10)
+        if check_digit == 10:
+            check_digit = 0
+        return print("The check digit has been calculated to be:", check_digit)
+    
+   
+    elif mode == 'verify' or '_': # requires 13 digit n for input
+        s = 0
+        for i in range(0,6):
+            n_i = (n // 10 ** ((2*i) + 1)) % 10 
+            s = s + (3 * n_i)
+            
+        for i in range(0,6):
+            n_i = (n // 10 ** ((2*i) + 2)) % 10 
+            s = s + n_i
+                 
+        check_digit = 10 - (s % 10)
+        if check_digit == 10:
+            check_digit = 0
+        
+        print("The check digit should be", check_digit)        
+        return check_digit == n % 10 #True if check digit is correctly matched, false if not.
