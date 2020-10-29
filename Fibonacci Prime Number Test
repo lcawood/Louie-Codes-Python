@@ -1,0 +1,26 @@
+#Prime test function
+def prime(n):
+    """
+    Returns `True` if `n` is a prime number and `False` otherwise.
+    """
+    if n < 2:
+        return False
+    for k in range(2, n):
+        if n % k == 0:
+            return False
+    return True
+
+
+def fiboprime(n):
+    """
+    Returns `True` if `n` is a Fibonacci prime number and `False` otherwise.
+    """
+
+    f0 = 0
+    f1 = 1
+    while n > 1:
+        nxt = f0 + f1
+        f0 = f1
+        f1 = nxt
+        n = n - 1
+    return prime(f1)
