@@ -1,0 +1,27 @@
+def compare(p1, p2):
+    """
+    Compares each element in vector p1 with the corresponding element in vector p2
+    """
+    try:  
+        p1_lst_str = p1.split(',')    
+        p1_lst_flt = [float(i) for i in p1_lst_str]
+    except Exception:
+        raise TypeError
+           
+        
+    try: 
+        p2_lst_str = p2.split(',')
+        p2_lst_flt = [float(i) for i in p2_lst_str]
+    except Exception:
+        raise TypeError
+    
+    else:
+        
+        if len(p1_lst_flt) != len(p2_lst_flt):
+            return None
+        
+        else:
+            if all(p1_lst_flt[i] <= p2_lst_flt[i] for i in range(0, len(p1_lst_flt))):
+                return True
+            else:
+                return False
