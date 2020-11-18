@@ -1,0 +1,41 @@
+def sudoku(L):
+    """
+    checks if a sudoku is valid 
+    """
+    
+#ensures no duplicate in a row    
+    for i in range(9):
+        row_i = L[i-1]
+        row_i_no_zero = list(filter(lambda a: a != 0, row_i))
+    
+        if len(row_i_no_zero) != len(set(row_i_no_zero)):
+            return False
+        else: 
+            continue
+  
+#ensures no duplicate in a column    
+    for i in range(9):
+        col_i = [L[j][i-1] for j in range(9)] 
+        col_i_no_zero = list(filter(lambda a: a != 0, col_i))
+        
+        if len(col_i_no_zero) != len(set(col_i_no_zero)):
+            return False
+        else:
+            continue
+    
+#test 3x3 grids do not contain the same digit, excluding zero                     
+    for l in range(3):         
+         for k in range(3):
+             grid_t = []
+             for i in range(3):
+                 for j in range(3):
+                     grid_t.append(L[i+3*l][j+3*k])
+                     grid_t_no_zero = list(filter(lambda a: a != 0, grid_t))
+    
+                     if len(grid_t_no_zero) != len(set(grid_t_no_zero)):
+                         return False
+                     else:
+                         continue
+
+
+    return True
