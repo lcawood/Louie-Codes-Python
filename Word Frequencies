@@ -1,0 +1,25 @@
+def word_count(s):
+    """
+    Counts the frequency of given words in a string
+    """
+ 
+    import re
+    word_lst = re.findall(r'\w+', s)
+    word_lst_lwr = [x.lower() for x in word_lst]
+    
+    word_freq = []
+    for i in word_lst_lwr:
+        word_freq.append(word_lst_lwr.count(i))
+        
+    list_with_dup = list(zip(word_lst_lwr, word_freq))
+    
+    
+    
+    list_no_dup = list(set([i for i in list_with_dup]))
+    
+    import operator
+    list_no_dup.sort(key = operator.itemgetter(0))
+    list_no_dup.reverse()
+    list_no_dup.sort(key = operator.itemgetter(1))
+    list_no_dup.reverse()
+    print(list_no_dup)
